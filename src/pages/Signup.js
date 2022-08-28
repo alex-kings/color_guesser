@@ -2,15 +2,37 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Signup(){
 
+    // Check if email has correct form
+    function checkEmail(email) {
+        let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    
+        if (!filter.test(email)) {
+            console.log('Invalid email address.')
+            return false;
+        }
+        return true
+    }
+
+    // Check password
+    function checkPassword(password){
+        if(password.length < 6){
+            console.log('Password should be longer!')
+            return false
+        }
+        return true
+    }
+
     // Signup a new user
     function handleSignup(){
         // Get email and password from user
         const email = document.getElementById('emailInput').value
         const password = document.getElementById('passwordInput').value
 
-        console.log('Creating account: ', email, password)
-        // Check email and password have correct format...
-        //...
+        // Check if email and password have correct format
+        if(!checkEmail(email) || !checkPassword(password)){
+            return
+        }
+        
 
         // Create account with firebase
         const auth = getAuth();
