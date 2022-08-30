@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
     const navigate = useNavigate()
-    const [errorMsg, setErrorMsg] = useState()
+    const [emailMsg, setEmailMsg] = useState()
+    const [passwordMsg, setPasswordMsg] = useState()
 
     // Check if email has correct form
     function checkEmail(email) {
@@ -34,13 +35,13 @@ export default function Signup() {
 
         // Check if email and password have correct format
         if (!checkEmail(email)){
-            setErrorMsg(<div>Email address <b>{email}</b> is invalid.</div>)
+            setEmailMsg(<div><b>{email}</b> is invalid.</div>)
             return
         }
         
         
         if(!checkPassword(password)) {
-            setErrorMsg('Password is not strong enough. Add additional characters including special characters and numbers.')
+            setPasswordMsg('Password requires more characters.')
             return
         }
 
@@ -57,16 +58,16 @@ export default function Signup() {
             .catch(error => {
                 switch (error.code) {
                     case 'auth/email-already-in-use':
-                        setErrorMsg(<div>Email address <b>{email}</b> already in use.</div>)
+                        setEmailMsg(<div><b>{email}</b> already in use.</div>)
                         break;
                     case 'auth/invalid-email':
-                        setErrorMsg(<div>Email address <b>{email}</b> is invalid.</div>)
+                        setEmailMsg(<div><b>{email}</b> is invalid.</div>)
                         break;
                     case 'auth/operation-not-allowed':
-                        setErrorMsg(`Error during sign up.`)
+                        setEmailMsg(`Error during sign up.`)
                         break;
                     case 'auth/weak-password':
-                        setErrorMsg('Password is not strong enough. Add additional characters including special characters and numbers.')
+                        setPasswordMsg('Password is not strong enough. Add additional characters including special characters and numbers.')
                         break;
                     default:
                         console.log(error.message);
@@ -76,20 +77,27 @@ export default function Signup() {
     }
 
     return (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex justify-content-center px-2">
             <div className='container card mt-5 bg-light p-2 row'>
                 <div className="mb-3">
-                    <label className="form-label" htmlFor='emailInput'>Email</label>
+                    <div className="form-label">Email</div>
                     <input className="form-control" id='emailInput' type='text' />
+                    {emailMsg? <span className="text-danger float-end">{emailMsg}</span>:null}
                 </div>
                 <div className="mb-3">
-                    <label className="form-label" htmlFor='passwordInput'>Password</label>
+                    <div className="form-label">Password</div>
                     <input className="form-control" id='passwordInput' type='password' />
+                    {passwordMsg? <span className="text-danger float-end">{passwordMsg}</span> : null}
                 </div>
                 <div className="col">
                     <button className="btn btn-primary" onClick={handleSignup}>register</button>
-                    {errorMsg ? <div className="alert alert-danger mx-2">{errorMsg}</div> : null}
+                    
                 </div>
+                <div>
+                    <span className="text-secondary float-end">Already have an account? <b className="text-primary">Sign in</b></span>
+                </div>
+                
+                
             </div>
         </div>
     )
