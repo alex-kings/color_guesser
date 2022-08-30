@@ -18,7 +18,7 @@ export default function Signup({auth}) {
     // Check if email has correct form
     function checkEmail(email) {
         let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-        return(filter.text(email))
+        return(filter.test(email))
     }
 
     // Check password

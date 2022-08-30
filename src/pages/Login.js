@@ -44,9 +44,7 @@ export default function Login({auth}){
                 <div className="mb-3">
                     <div className="form-label">Password</div>
                     <input className="form-control" id='passwordInput' type='password' />
-                    <div className="mt-2 text-danger">
-                        {errorMsg?errorMsg : null}
-                    </div>
+                    {errorMsg?<div className="mt-2 text-danger">{errorMsg}</div> : null}
                 </div>
                 <div className="col">
                     <button className="btn btn-primary" onClick={handleLogin}>sign in</button>
