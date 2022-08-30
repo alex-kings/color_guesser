@@ -5,9 +5,9 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 import './App.css';
 import Root from "./pages/Root";
+import { getAuth } from "firebase/auth";
 
 function App() {
-
   // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyDSm0FDzR54Vf9zGxRBvTb9Qq9evIj7kOw",
@@ -21,16 +21,17 @@ function App() {
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-
+  // Authentication
+  const auth = getAuth()
   
 
   return (
     <Router>
       <Routes>
         <Route path='/' element={<Root/>} />
-        <Route path='/main' element = {<Main/>} />
-        <Route path='/signup' element = {<Signup/>} />
-        <Route path='/login' element = {<Login/>} />
+        <Route path='/main' element = {<Main auth={auth}/>} />
+        <Route path='/signup' element = {<Signup auth={auth}/>} />
+        <Route path='/login' element = {<Login auth={auth}/>} />
       </Routes>
     </Router>
   );

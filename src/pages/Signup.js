@@ -1,30 +1,29 @@
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { useEventListener } from "../hooks/useEventListener"
 
-export default function Signup() {
+export default function Signup({auth}) {
     const navigate = useNavigate()
     const [emailMsg, setEmailMsg] = useState()
     const [passwordMsg, setPasswordMsg] = useState()
 
+    // Allow user to sign up by pressing enter
+    useEventListener('keydown',(e)=>{
+        if(e.key === 'Enter'){
+            handleSignup()
+        }
+    })
+
     // Check if email has correct form
     function checkEmail(email) {
         let filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-        if (!filter.test(email)) {
-            console.log('Invalid email address.')
-            return false;
-        }
-        return true
+        return(filter.text(email))
     }
 
     // Check password
     function checkPassword(password) {
-        if (password.length < 6) {
-            console.log('Password should be longer!')
-            return false
-        }
-        return true
+        return(password.length > 5)
     }
 
     // Signup a new user
@@ -45,9 +44,7 @@ export default function Signup() {
             return
         }
 
-
         // Create account with firebase
-        const auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
@@ -79,6 +76,9 @@ export default function Signup() {
     return (
         <div className="d-flex justify-content-center px-2">
             <div className='container card mt-5 bg-light p-2 row'>
+                <div className="d-flex justify-content-center">
+                    <h4>Sign up</h4>
+                </div>
                 <div className="mb-3">
                     <div className="form-label">Email</div>
                     <input className="form-control" id='emailInput' type='text' />
@@ -94,7 +94,7 @@ export default function Signup() {
                     
                 </div>
                 <div>
-                    <span className="text-secondary float-end">Already have an account? <b className="text-primary">Sign in</b></span>
+                    <span className="text-secondary float-end">Already have an account? <b className="text-primary pointer" onClick={()=>{navigate('/login')}}>Sign in</b></span>
                 </div>
                 
                 

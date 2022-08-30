@@ -4,4 +4,7 @@
 .max-width-50{
   max-width:50rem !important;
 }
+.pointer{
+  cursor:pointer;
+}
 
