@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import GuessCard from "../components/GuessCard"
 
 export default function Game() {
     const navigate = useNavigate()
@@ -8,7 +9,7 @@ export default function Game() {
     const [round, setRound] = useState(1)
     const [end, setEnd] = useState(false)
     const [currentScore, setCurrentScore] = useState(0)
-    const [inputLength, setInputLength] = useState(0)
+    
 
     useEffect(()=>{setRandomHex()},[])
 
@@ -49,10 +50,7 @@ export default function Game() {
         setRound(round + 1)
     }
 
-    // Change input length on input change
-    function handleInputChange(e){
-        setInputLength(e.target.value.length)
-    }
+    
 
     return (
         <div className="max-vh" style={{backgroundColor:color}}>
@@ -74,15 +72,7 @@ export default function Game() {
             </div>
             : 
             <div className="absolutely-centered">
-                <div className='p-3 card bg-light'>
-                    <span className="text-center h4" style={{color:color}}>Guess the color</span>
-                    <div className="input-group">
-                        <input onChange={handleInputChange} id='hexInput' type="text" className="form-control text-center" maxLength={6}/>
-                        <div className="input-group-append">   
-                            <button onClick={handleGuess} className={inputLength === 6 ? 'btn btn-secondary' : 'btn btn-secondary disabled'}>Ok!</button>
-                        </div>
-                    </div>
-                </div>
+                <GuessCard handleGuess={handleGuess} color={color}/>
             </div>
             }
             
