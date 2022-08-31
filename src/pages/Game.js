@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-export default function Game({color, setColor}) {
+export default function Game() {
+    const navigate = useNavigate()
+
+    const [color,setColor] = useState()
     const [round, setRound] = useState(1)
     const [end, setEnd] = useState(false)
     const [currentScore, setCurrentScore] = useState(0)
@@ -51,7 +55,7 @@ export default function Game({color, setColor}) {
     }
 
     return (
-        <div>
+        <div className="max-vh" style={{backgroundColor:color}}>
             <div className="float-right bg-light p-1 m-1 rounded">
                 <div className="col" style={{color:color}}>
                     <div>round {round}</div>
@@ -64,7 +68,7 @@ export default function Game({color, setColor}) {
                 <div className="bg-light p-3 rounded">
                     <div className="col">
                         <div className="mb-3 h5">Final score: {currentScore}</div>
-                        <button className="row btn btn-outline-primary">back to main page</button>
+                        <button onClick={()=>{navigate('/main')}} className="row btn btn-outline-primary">back to main page</button>
                     </div>
                 </div>
             </div>
