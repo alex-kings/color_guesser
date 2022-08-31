@@ -6,9 +6,9 @@ export default function Rounds({rounds}){
             {rounds.map(round=>(
                 <div key={round.number} className="bg-light">
                     <div className="pb-2">
-                        <div className="row">
-                            <div className="col">Round {round.number}</div>
-                            <div className="col text-right">Score: {round.score}</div>
+                        <div className="row justify-content-between">
+                            <div className="col-md-auto">Round {round.number}</div>
+                            <div className="col-md-auto text-right">Score: {round.score}</div>
                         </div>
                         <div className="row">
                             <div className="col"><ColorBox text='Color: ' color={round.color}/></div>
