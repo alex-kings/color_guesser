@@ -8,11 +8,12 @@ export default function Rounds({rounds}){
                     <div className="pb-2">
                         <div className="row">
                             <div className="col">Round {round.number}</div>
-                            <div className="col">Score: {round.score}</div>
+                            <div className="col text-right">Score: {round.score}</div>
                         </div>
-
-                        <ColorBox color={round.color}/>
-                        <ColorBox color={round.guess}/>
+                        <div className="row">
+                            <div className="col"><ColorBox text='Color: ' color={round.color}/></div>
+                            <div className="col"><ColorBox text='Guess: ' color={round.guess}/></div>
+                        </div>
                     </div>
                     
                 </div>

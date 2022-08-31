@@ -62,10 +62,12 @@ export default function Game() {
         setRound(round + 1)
     }
 
+    
+
 
 
     return (
-        <div className="max-vh" style={{ backgroundColor: color }}>
+        <div className="max-vh pt-3" style={{ backgroundColor: color }}>
         <div className="container-fluid">
             <div className="row">
 
