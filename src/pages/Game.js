@@ -46,7 +46,7 @@ export default function Game() {
         setRounds([...rounds, {
             score: score,
             number: round,
-            guess: input,
+            guess: `#${input}`,
             color: color
         }])
 
@@ -65,33 +65,27 @@ export default function Game() {
 
 
     return (
-        <div className=" p-2" style={{ backgroundColor: color }}>
+        <div className="max-vh" style={{ backgroundColor: color }}>
+        <div className="container-fluid">
             <div className="row">
 
-                <div className="col">
-                    <div className="d-flex justify-content-center">
+                <div className="col-8">
                     {end ? <ResultCard score={currentScore} /> :
                         <GuessCard handleGuess={handleGuess} color={color} />}
-                    </div>
+                    
+                    
                 </div>
 
                 <div className="col">
-                    <div className="d-flex justify-content-end">
                         <div>
-                            <div className="bg-light rounded">
-                                <div className="col" style={{ color: color }}>
-                                    <div>round {round}</div>
-                                    <div>score: {currentScore}</div>
-                                </div>
-                            </div>
                             <div className="bg-light rounded">
                                 <Rounds rounds={rounds} />
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
 
+        </div>
         </div>
     )
 }

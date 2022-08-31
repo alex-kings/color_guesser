@@ -1,18 +1,22 @@
+import ColorBox from "./ColorBox";
+
 export default function Rounds({rounds}){
-
-
     return(
-        
-            <div className="col small">
-                {rounds.map(round=>(
-                    <div key={round.number} className="bg-light">
+        <div className="container small">
+            {rounds.map(round=>(
+                <div key={round.number} className="bg-light">
+                    <div className="pb-2">
                         <div className="row">
-                            <div>{round.number}</div>
-                            <div>{round.color},#{round.guess}</div>
+                            <div className="col">Round {round.number}</div>
+                            <div className="col">Score: {round.score}</div>
                         </div>
+
+                        <ColorBox color={round.color}/>
+                        <ColorBox color={round.guess}/>
                     </div>
-                ))}
-            </div>
-        
+                    
+                </div>
+            ))}
+        </div>
     )
 }
