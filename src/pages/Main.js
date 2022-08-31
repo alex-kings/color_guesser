@@ -16,8 +16,13 @@ export default function Main({auth}){
     }
 
     return(
-        <div className='max-vh'>
-            <button className="btn btn-primary btn-lg absolute-center" onClick={start}>Start</button>
+        <div className="m-3">
+            <div className="d-flex justify-content-end">
+                <u className="text-info pointer">leaderboard</u>
+            </div>
+            <div className="">
+                <button className="btn btn-primary btn-lg absolute-center" onClick={start}>Play!</button>
+            </div>
         </div>
         
     )

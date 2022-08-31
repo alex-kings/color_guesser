@@ -7,6 +7,7 @@ import './App.css';
 import Root from "./pages/Root";
 import { getAuth } from "firebase/auth";
 import Game from "./pages/Game";
+import Navbar from "./components/Navbar";
 
 function App() {
   // Firebase configuration
@@ -30,8 +31,8 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Root/>} />
-        <Route path='/main' element = {<Main auth={auth}/>} />
-        <Route path='/game' element = {<Game auth={auth}/>} />
+        <Route path='/main' element = {<><Navbar/><Main auth={auth}/></>} />
+        <Route path='/game' element = {<><Navbar/><Game auth={auth}/></>} />
         <Route path='/signup' element = {<Signup auth={auth}/>} />
         <Route path='/login' element = {<Login auth={auth}/>} />
       </Routes>
