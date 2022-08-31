@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { useEventListener } from '../hooks/useEventListener.js'
 
 export default function Game({color, setColor}) {
-    const [round, setRound] = useState(0)
+    const [round, setRound] = useState(1)
+    const [currentScore, setCurrentScore] = useState(0)
 
     useEventListener('keydown',handleKeyDown)
     useEffect(()=>{setRandomHex()},[])
@@ -25,12 +26,24 @@ export default function Game({color, setColor}) {
 
     return (
         <div>
-            <div className="input-group mb-3">
-                <div className="input-group-prepend">
-                    <span className="input-group-text"><div>#</div></span>
+            <div className="float-right">
+                <div className="p-3 col">
+                    <div>round {round}</div>
+                    <div>score: {currentScore}</div>
                 </div>
-                <input id='hexInput' type="text" className="form-control"/>
             </div>
+            <div className="absolutely-centered">
+                <div className='p-3 card bg-light'>
+                    <span className="text-center h4" style={{color:color}}>Guess the color</span>
+                    <div className="input-group">
+                        <input id='hexInput' type="text" className="form-control text-center" maxLength={6}/>
+                        <div className="input-group-append">
+                            <button className="btn input-group-append btn-secondary">Ok!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     )
 }

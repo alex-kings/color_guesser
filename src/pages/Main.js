@@ -13,7 +13,6 @@ export default function Main({auth}){
     // })
 
     
-
     // Start the game
     function start(){
         setStarted(true)
@@ -21,8 +20,12 @@ export default function Main({auth}){
 
     return(
         <div className='max-vh' style={{backgroundColor:color}}>
+            
+            {started ? 
+            <Game setColor={setColor} color={color}/> 
+            : 
             <button className="btn btn-primary btn-lg absolute-center" onClick={start}>Start</button>
-            {started ? <Game setColor={setColor} color={color}/> : null}
+            }
         </div>
         
     )
