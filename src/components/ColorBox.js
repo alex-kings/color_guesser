@@ -4,7 +4,6 @@ export default function ColorBox({color, text}){
         let r = parseInt(color.substring(1,3),16)
         let g = parseInt(color.substring(3,5),16)
         let b = parseInt(color.substring(5,7),16)
-        console.log(r,g,b)
         return ((r+g+b) > 382)
     }
 
