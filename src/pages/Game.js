@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import GuessCard from "../components/GuessCard"
+import ResultCard from "../components/ResultCard"
 
 export default function Game() {
-    const navigate = useNavigate()
+    
 
     const [color,setColor] = useState()
     const [round, setRound] = useState(1)
@@ -63,12 +63,7 @@ export default function Game() {
 
             {end? 
             <div className="absolutely-centered">
-                <div className="bg-light p-3 rounded">
-                    <div className="col">
-                        <div className="mb-3 h5">Final score: {currentScore}</div>
-                        <button onClick={()=>{navigate('/main')}} className="row btn btn-outline-primary">back to main page</button>
-                    </div>
-                </div>
+                <ResultCard score={currentScore}/>
             </div>
             : 
             <div className="absolutely-centered">
