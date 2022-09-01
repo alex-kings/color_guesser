@@ -37,9 +37,10 @@ export default function Game({auth, db}) {
         let diffR = Math.abs(parseInt(color.substring(1, 3), 16) - parseInt(input.substring(0, 2), 16))
         let diffG = Math.abs(parseInt(color.substring(3, 5), 16) - parseInt(input.substring(2, 4), 16))
         let diffB = Math.abs(parseInt(color.substring(5, 7), 16) - parseInt(input.substring(4, 6), 16))
+        let sumDiff = Math.sqrt(diffR**2 + diffG**2 + diffB**2)
 
         // inverse of the total difference
-        let score = Math.floor(100 / (0.05 * (diffR + diffG + diffB) + 1))
+        let score = Math.floor(100 / (0.05 * sumDiff + 1))
 
         // Append score to total score
         setCurrentScore(currentScore + score)
