@@ -62,6 +62,7 @@ export default function Signup({auth, db}) {
 
                 // AWAIT??
                 setDoc(doc(db, 'users', userCredential.user.uid), {
+                    email:email,
                     username: username,
                     gamesPlayed:[]
                 });

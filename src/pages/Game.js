@@ -15,6 +15,12 @@ export default function Game({auth, db}) {
 
     useEffect(() => { setRandomHex() }, [])
 
+    useEffect(()=>{ 
+        if(end){
+            
+            endGame()
+        }
+    },[end])
 
     // Generate random hex color
     function setRandomHex() {
@@ -50,7 +56,6 @@ export default function Game({auth, db}) {
         // Check for end of the game
         if (round === 5) {
             setEnd(true)
-            endGame(score)
             return
         }
 
@@ -60,13 +65,14 @@ export default function Game({auth, db}) {
     }
 
     // Store score in database
-    async function endGame(score){
+    async function endGame(){
         // Add new game played for this user in the database
         const userDoc = doc(db, 'users', auth.currentUser.uid)
 
+        console.log(`Setting score: ${currentScore}`)
         await updateDoc(userDoc, {
             gamesPlayed: arrayUnion({
-                score:score
+                score:currentScore
             })
         })
 
@@ -80,7 +86,7 @@ export default function Game({auth, db}) {
             <div className="row">
 
                 <div className="col-8">
-                    <div className="justify-content-center d-flex mt-5">
+                    <div className="d-flex justify-content-center mt-3">
                     {end ? <ResultCard score={currentScore} /> :
                     <GuessCard handleGuess={handleGuess} color={color} />}
                     </div>
