@@ -1,5 +1,10 @@
+import GuessCard from "../components/GuessCard";
+
 export default function Leaderboard(){
     return(
-        <div>Leaderboards</div>
+        <div>
+            <GuessCard/>
+
+        </div>
     )
 }

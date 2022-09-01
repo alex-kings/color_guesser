@@ -8,7 +8,7 @@ export default function GuessCard({handleGuess, color}) {
         setInputLength(e.target.value.length)
     }
     return (
-        <div className='p-3 card bg-light'>
+        <div className='p-3 card bg-light' style={{width:'18rem'}}>
             <span className="text-center h4" style={{ color: color }}>Guess the color</span>
             <div className="input-group">
                 <input onChange={handleInputChange} id='hexInput' type="text" className="form-control text-center" maxLength={6} />

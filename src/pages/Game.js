@@ -80,8 +80,10 @@ export default function Game({auth, db}) {
             <div className="row">
 
                 <div className="col-8">
+                    <div className="justify-content-center d-flex mt-5">
                     {end ? <ResultCard score={currentScore} /> :
                     <GuessCard handleGuess={handleGuess} color={color} />}
+                    </div>
                 </div>
 
                 <div className="col">
