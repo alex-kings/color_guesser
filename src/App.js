@@ -10,6 +10,7 @@ import Game from "./pages/Game";
 import Navbar from "./components/Navbar";
 import Leaderboard from "./pages/Leaderboard";
 import { getFirestore } from "firebase/firestore";
+import Profile from "./pages/Profile";
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/' element={<Root/>} />
         <Route path='/main' element = {<><Navbar/><Main auth={auth}/></>} />
         <Route path='/game' element = {<><Navbar/><Game db={db} auth={auth}/></>} />
+        <Route path='/profile' element = {<><Navbar/><Profile db={db} auth={auth}/></>} />
         <Route path='/leaderboard' element = {<><Navbar/><Leaderboard/></>} />
         <Route path='/signup' element = {<Signup db={db} auth={auth}/>} />
         <Route path='/login' element = {<Login auth={auth}/>} />
