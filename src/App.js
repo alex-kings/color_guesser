@@ -9,8 +9,10 @@ import { getAuth } from "firebase/auth";
 import Game from "./pages/Game";
 import Navbar from "./components/Navbar";
 import Leaderboard from "./pages/Leaderboard";
+import { getFirestore } from "firebase/firestore";
 
 function App() {
+
   // Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyDSm0FDzR54Vf9zGxRBvTb9Qq9evIj7kOw",
@@ -24,18 +26,18 @@ function App() {
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app)
   // Authentication
   const auth = getAuth()
-  
 
   return (
     <Router>
       <Routes>
         <Route path='/' element={<Root/>} />
         <Route path='/main' element = {<><Navbar/><Main auth={auth}/></>} />
-        <Route path='/game' element = {<><Navbar/><Game auth={auth}/></>} />
+        <Route path='/game' element = {<><Navbar/><Game db={db} auth={auth}/></>} />
         <Route path='/leaderboard' element = {<><Navbar/><Leaderboard/></>} />
-        <Route path='/signup' element = {<Signup auth={auth}/>} />
+        <Route path='/signup' element = {<Signup db={db} auth={auth}/>} />
         <Route path='/login' element = {<Login auth={auth}/>} />
       </Routes>
     </Router>

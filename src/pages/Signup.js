@@ -2,11 +2,13 @@ import { createUserWithEmailAndPassword } from "firebase/auth"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useEventListener } from "../hooks/useEventListener"
+import {doc, setDoc} from 'firebase/firestore'
 
-export default function Signup({auth}) {
+export default function Signup({auth, db}) {
     const navigate = useNavigate()
     const [emailMsg, setEmailMsg] = useState()
     const [passwordMsg, setPasswordMsg] = useState()
+    const [usernameMsg, setUsernameMsg] = useState()
 
     // Allow user to sign up by pressing enter
     useEventListener('keydown',(e)=>{
@@ -31,6 +33,12 @@ export default function Signup({auth}) {
         // Get email and password from user
         const email = document.getElementById('emailInput').value
         const password = document.getElementById('passwordInput').value
+        const username = document.getElementById('usernameInput').value
+
+        // Check username was entered
+        if(username.length === 0) {
+            setUsernameMsg('A username is required')
+        }
 
         // Check if email and password have correct format
         if (!checkEmail(email)){
@@ -44,11 +52,19 @@ export default function Signup({auth}) {
             return
         }
 
+
         // Create account with firebase
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
-                //const user = userCredential.user;
+
+                // Create a new user in user table with the uid just generated
+
+                // AWAIT??
+                setDoc(doc(db, 'users', userCredential.user.uid), {
+                    username: username,
+                    gamesPlayed:[]
+                });
 
                 navigate('/main')
             })
@@ -78,6 +94,11 @@ export default function Signup({auth}) {
             <div className='container card mt-5 bg-light p-2 row'>
                 <div className="d-flex justify-content-center">
                     <h4>Sign up</h4>
+                </div>
+                <div className="mb-3">
+                    <div className="form-label">Name</div>
+                    <input className="form-control" id='usernameInput' type='text' />
+                    {usernameMsg? <span className="text-danger float-end">{usernameMsg}</span>:null}
                 </div>
                 <div className="mb-3">
                     <div className="form-label">Email</div>

@@ -1,21 +1,19 @@
+import { doc, arrayUnion, updateDoc } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import GuessCard from "../components/GuessCard"
 import ResultCard from "../components/ResultCard"
 import Rounds from "../components/Rounds"
 
-export default function Game() {
-
+export default function Game({auth, db}) {
 
     const [color, setColor] = useState()
     const [round, setRound] = useState(1)
     const [end, setEnd] = useState(false)
     const [currentScore, setCurrentScore] = useState(0)
-
     const [rounds, setRounds] = useState([])
 
 
     useEffect(() => { setRandomHex() }, [])
-
 
 
     // Generate random hex color
@@ -28,13 +26,11 @@ export default function Game() {
     function handleGuess() {
         // Input is a hex value
         const input = document.getElementById('hexInput').value
-        if (input.length != 6) return
+        if (input.length !== 6) return
 
         let diffR = Math.abs(parseInt(color.substring(1, 3), 16) - parseInt(input.substring(0, 2), 16))
         let diffG = Math.abs(parseInt(color.substring(3, 5), 16) - parseInt(input.substring(2, 4), 16))
         let diffB = Math.abs(parseInt(color.substring(5, 7), 16) - parseInt(input.substring(4, 6), 16))
-
-
 
         // inverse of the total difference
         let score = Math.floor(100 / (0.05 * (diffR + diffG + diffB) + 1))
@@ -54,6 +50,7 @@ export default function Game() {
         // Check for end of the game
         if (round === 5) {
             setEnd(true)
+            endGame(score)
             return
         }
 
@@ -62,7 +59,18 @@ export default function Game() {
         setRound(round + 1)
     }
 
-    
+    // Store score in database
+    async function endGame(score){
+        // Add new game played for this user in the database
+        const userDoc = doc(db, 'users', auth.currentUser.uid)
+
+        await updateDoc(userDoc, {
+            gamesPlayed: arrayUnion({
+                score:score
+            })
+        })
+
+    }
 
 
 
@@ -73,9 +81,7 @@ export default function Game() {
 
                 <div className="col-8">
                     {end ? <ResultCard score={currentScore} /> :
-                        <GuessCard handleGuess={handleGuess} color={color} />}
-                    
-                    
+                    <GuessCard handleGuess={handleGuess} color={color} />}
                 </div>
 
                 <div className="col">
@@ -85,8 +91,8 @@ export default function Game() {
                             </div>
                         </div>
                 </div>
-            </div>
 
+            </div>
         </div>
         </div>
     )

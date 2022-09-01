@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useEffect, useState } from "react"
+//import { useEffect } from "react"
 
 export default function Main({auth}){
     const navigate = useNavigate()
