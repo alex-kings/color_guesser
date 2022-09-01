@@ -66,6 +66,7 @@ export default function Signup({auth, db}) {
                     gamesPlayed:[]
                 });
 
+                // Go to main page
                 navigate('/main')
             })
             .catch(error => {
@@ -90,32 +91,34 @@ export default function Signup({auth, db}) {
     }
 
     return (
-        <div className="d-flex justify-content-center px-2">
-            <div className='container card mt-5 bg-light p-2 row'>
+        <div className="d-flex justify-content-center">
+            <div className='card mt-5 bg-light p-2'>
                 <div className="d-flex justify-content-center">
                     <h4>Sign up</h4>
                 </div>
                 <div className="mb-3">
                     <div className="form-label">Name</div>
                     <input className="form-control" id='usernameInput' type='text' />
-                    {usernameMsg? <span className="text-danger float-end">{usernameMsg}</span>:null}
+                    {usernameMsg? <span className="text-danger">{usernameMsg}</span>:null}
                 </div>
                 <div className="mb-3">
                     <div className="form-label">Email</div>
                     <input className="form-control" id='emailInput' type='text' />
-                    {emailMsg? <span className="text-danger float-end">{emailMsg}</span>:null}
+                    {emailMsg? <span className="text-danger">{emailMsg}</span>:null}
                 </div>
                 <div className="mb-3">
                     <div className="form-label">Password</div>
                     <input className="form-control" id='passwordInput' type='password' />
-                    {passwordMsg? <span className="text-danger float-end">{passwordMsg}</span> : null}
+                    {passwordMsg? <span className="text-danger">{passwordMsg}</span> : null}
                 </div>
-                <div className="col">
-                    <button className="btn btn-primary" onClick={handleSignup}>register</button>
-                    
-                </div>
-                <div>
-                    <span className="text-secondary float-end">Already have an account? <b className="text-primary pointer" onClick={()=>{navigate('/login')}}>Sign in</b></span>
+                <div className="row">
+                    <div className="col">
+                        <button className="btn btn-primary" onClick={handleSignup}>register</button>
+                        
+                    </div>
+                    <div className="col text-right">
+                        <span className="text-secondary">Already have an account? <b className="text-primary pointer" onClick={()=>{navigate('/login')}}>Sign in</b></span>
+                    </div>
                 </div>
                 
                 
