@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import GuessCard from "../components/GuessCard"
 import ResultCard from "../components/ResultCard"
 import Rounds from "../components/Rounds"
+import { useReroute } from "../hooks/useReroute"
 
 export default function Game({auth, db}) {
 
@@ -12,6 +13,7 @@ export default function Game({auth, db}) {
     const [currentScore, setCurrentScore] = useState(0)
     const [rounds, setRounds] = useState([])
 
+    useReroute()
 
     useEffect(() => { setRandomHex() }, [])
 
@@ -70,7 +72,6 @@ export default function Game({auth, db}) {
         // Add new game played for this user in the database
         const userDoc = doc(db, 'users', auth.currentUser.uid)
 
-        console.log(`Setting score: ${currentScore}`)
         await updateDoc(userDoc, {
             gamesPlayed: arrayUnion({
                 score:currentScore

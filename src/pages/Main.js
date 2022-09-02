@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 //import { useEffect } from "react"
+import {useReroute} from '../hooks/useReroute.js'
 
 export default function Main({auth}){
     const navigate = useNavigate()
@@ -8,6 +9,8 @@ export default function Main({auth}){
     //     // User needs to be authenticated to go to main page
     //     if(auth.currentUser == null) navigate('/login')
     // })
+
+    useReroute()
 
     
     // Start the game

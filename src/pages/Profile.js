@@ -1,8 +1,11 @@
 import { getDoc, doc} from "firebase/firestore"
 import { useEffect, useState } from "react"
 import ProfileCard from "../components/ProfileCard"
+import { useReroute } from "../hooks/useReroute"
 
 export default function Profile({db, auth}){
+    useReroute()
+
     const [user, setUser] = useState()
 
     useEffect(()=>{
