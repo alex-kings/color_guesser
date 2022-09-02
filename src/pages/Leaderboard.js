@@ -28,22 +28,25 @@ export default function Leaderboard({db}){
     }
 
     return(
-        <div>
-            {topUsers.map((user,index)=>(
-                <div key={index}>
-                    {console.log(`hello${user.username}`)}
-                    <div>{user.username}: {user.highScore}</div>
-                </div>
-            ))}
-            <button onClick={()=>{console.log(topUsers)}}>click</button>
-
+        <div className="container w-50 mt-3">
             <table className="table">
                 <thead>
                     <tr>
+                        <th scope='col'>#</th>
                         <th scope='col'>Username</th>
                         <th scope='col'>High score</th>
                     </tr>
                 </thead>
+                {}
+                <tbody>
+                    {topUsers.map((user,index)=>(
+                    <tr key={index}>
+                        <th scope='row'>{index+1}</th>
+                        <td>{user.username}</td>
+                        <td>{user.highScore}</td>
+                    </tr>
+                    ))}
+                </tbody>
 
             </table>
         </div>
