@@ -5,7 +5,7 @@ export default function Root(){
     const navigate = useNavigate();
     useEffect(()=>{
         console.log('Redirecting to login')
-        navigate('/login')
+        navigate('/Color_Guesser/login')
     })
 
     return(

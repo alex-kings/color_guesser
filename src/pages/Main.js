@@ -12,13 +12,13 @@ export default function Main({auth}){
     
     // Start the game
     function start(){
-        navigate('/game')
+        navigate('/Color_Guesser/game')
     }
 
     return(
         <div className="m-3">
             <div className="d-flex justify-content-end">
-                <u onClick={()=>{navigate('/leaderboard')}} className="text-info pointer">leaderboard</u>
+                <u onClick={()=>{navigate('/Color_Guesser/leaderboard')}} className="text-info pointer">leaderboard</u>
             </div>
             <div className="">
                 <button className="btn btn-primary btn-lg absolute-center" onClick={start}>Play!</button>

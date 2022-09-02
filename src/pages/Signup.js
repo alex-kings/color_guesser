@@ -68,7 +68,7 @@ export default function Signup({auth, db}) {
                 });
 
                 // Go to main page
-                navigate('/main')
+                navigate('/Color_Guesser/main')
             })
             .catch(error => {
                 switch (error.code) {
@@ -118,7 +118,7 @@ export default function Signup({auth, db}) {
                         
                     </div>
                     <div className="col text-right">
-                        <span className="text-secondary">Already have an account? <b className="text-primary pointer" onClick={()=>{navigate('/login')}}>Sign in</b></span>
+                        <span className="text-secondary">Already have an account? <b className="text-primary pointer" onClick={()=>{navigate('/Color_Guesser/login')}}>Sign in</b></span>
                     </div>
                 </div>
                 
