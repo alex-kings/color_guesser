@@ -39,7 +39,7 @@ function App() {
         <Route path='/Color_Guesser/main' element = {<><Navbar/><Main auth={auth}/></>} />
         <Route path='/Color_Guesser/game' element = {<><Navbar/><Game db={db} auth={auth}/></>} />
         <Route path='/Color_Guesser/profile' element = {<><Navbar/><Profile db={db} auth={auth}/></>} />
-        <Route path='/Color_Guesser/leaderboard' element = {<><Navbar/><Leaderboard/></>} />
+        <Route path='/Color_Guesser/leaderboard' element = {<><Navbar/><Leaderboard db={db}/></>} />
         <Route path='/Color_Guesser/signup' element = {<Signup db={db} auth={auth}/>} />
         <Route path='/Color_Guesser/login' element = {<Login auth={auth}/>} />
       </Routes>
