@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Color_Guesser/static/css/main.c3818b2d.css",
-    "main.js": "/Color_Guesser/static/js/main.9dac518c.js",
+    "main.js": "/Color_Guesser/static/js/main.f5fa2e1b.js",
     "static/media/bootstrap-icons.woff?": "/Color_Guesser/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
     "static/media/bootstrap-icons.woff2?": "/Color_Guesser/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
     "index.html": "/Color_Guesser/index.html",
     "main.c3818b2d.css.map": "/Color_Guesser/static/css/main.c3818b2d.css.map",
-    "main.9dac518c.js.map": "/Color_Guesser/static/js/main.9dac518c.js.map"
+    "main.f5fa2e1b.js.map": "/Color_Guesser/static/js/main.f5fa2e1b.js.map"
   },
   "entrypoints": [
     "static/css/main.c3818b2d.css",
-    "static/js/main.9dac518c.js"
+    "static/js/main.f5fa2e1b.js"
   ]
 }
