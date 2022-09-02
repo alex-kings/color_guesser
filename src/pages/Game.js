@@ -1,4 +1,4 @@
-import { doc, arrayUnion, updateDoc } from "firebase/firestore"
+import { doc, arrayUnion, updateDoc, getDoc } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import GuessCard from "../components/GuessCard"
 import ResultCard from "../components/ResultCard"
@@ -71,12 +71,24 @@ export default function Game({auth, db}) {
     async function endGame(){
         // Add new game played for this user in the database
         const userDoc = doc(db, 'users', auth.currentUser.uid)
-
         await updateDoc(userDoc, {
             gamesPlayed: arrayUnion({
                 score:currentScore
             })
         })
+
+        // Check if this is the user's highest score
+        const docSnap = await getDoc(userDoc)
+        const highestScore = docSnap.data().highScore
+        console.log(highestScore)
+
+        if(highestScore == null || currentScore > highestScore){
+            // Update high score
+            console.log('updating high score')
+            await updateDoc(userDoc,{
+                highScore: currentScore,
+            })
+        }
 
     }
 
