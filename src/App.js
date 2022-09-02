@@ -33,15 +33,15 @@ function App() {
 
   return (
     <>
-    <Router>
+    <Router basename="Color_Guesser">
       <Routes>
-        <Route path='/Color_Guesser/' element={<Root/>} />
-        <Route path='/Color_Guesser/main' element = {<><Navbar/><Main auth={auth}/></>} />
-        <Route path='/Color_Guesser/game' element = {<><Navbar/><Game db={db} auth={auth}/></>} />
-        <Route path='/Color_Guesser/profile' element = {<><Navbar/><Profile db={db} auth={auth}/></>} />
-        <Route path='/Color_Guesser/leaderboard' element = {<><Navbar/><Leaderboard db={db}/></>} />
-        <Route path='/Color_Guesser/signup' element = {<Signup db={db} auth={auth}/>} />
-        <Route path='/Color_Guesser/login' element = {<Login auth={auth}/>} />
+        <Route path='/' element={<Root/>} />
+        <Route path='/main' element = {<><Navbar/><Main auth={auth}/></>} />
+        <Route path='/game' element = {<><Navbar/><Game db={db} auth={auth}/></>} />
+        <Route path='/profile' element = {<><Navbar/><Profile db={db} auth={auth}/></>} />
+        <Route path='/leaderboard' element = {<><Navbar/><Leaderboard db={db}/></>} />
+        <Route path='/signup' element = {<Signup db={db} auth={auth}/>} />
+        <Route path='/login' element = {<Login auth={auth}/>} />
       </Routes>
     </Router>
     </>

@@ -24,7 +24,7 @@ export default function Login({auth}){
         .then((userCredential) => {
             // Signed in 
             //const user = userCredential.user;
-            navigate('/Color_Guesser/main')
+            navigate('/main')
         })
         .catch((error) => {
             setErrorMsg('Email or password incorrect.')
@@ -51,7 +51,7 @@ export default function Login({auth}){
                         <button className="btn btn-primary" onClick={handleLogin}>sign in</button>
                     </div>
                     <div className="col text-right">
-                        <span className="text-secondary float-end">Don't have an account? <b className="text-primary pointer" onClick={()=>{navigate('/Color_Guesser/signup')}}>Register</b></span>
+                        <span className="text-secondary float-end">Don't have an account? <b className="text-primary pointer" onClick={()=>{navigate('/signup')}}>Register</b></span>
                     </div>
                 </div>
                 

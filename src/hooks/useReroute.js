@@ -10,7 +10,7 @@ function useReroute(){
     const navigate = useNavigate()
     const auth = getAuth()
     useEffect(()=>{
-        if(auth.currentUser == null) navigate('/Color_Guesser/login')
+        if(auth.currentUser == null) navigate('/login')
 
     })
 }
