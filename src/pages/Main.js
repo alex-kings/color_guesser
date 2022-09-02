@@ -20,11 +20,14 @@ export default function Main({auth}){
 
     return(
         <div className="m-3">
-            <div className="d-flex justify-content-end">
-                <u onClick={()=>{navigate('/leaderboard')}} className="text-info pointer">leaderboard</u>
-            </div>
-            <div className="">
-                <button className="btn btn-primary btn-lg absolute-center" onClick={start}>Play!</button>
+            <div className="row">
+                <div className="col-8">
+                    <button className="btn btn-primary btn-lg absolute-center" onClick={start}>Play!</button>
+                    
+                </div>
+                <div className="col text-right">
+                    <u onClick={()=>{navigate('/leaderboard')}} className="text-info pointer">leaderboard</u>
+                </div>
             </div>
         </div>
         
