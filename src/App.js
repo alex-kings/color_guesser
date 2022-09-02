@@ -35,7 +35,7 @@ function App() {
     <>
     <Router basename="Color_Guesser">
       <Routes>
-        <Route path='/' element={<Root/>} />
+        <Route exact path='/' element={<Root/>} />
         <Route path='/main' element = {<><Navbar/><Main auth={auth}/></>} />
         <Route path='/game' element = {<><Navbar/><Game db={db} auth={auth}/></>} />
         <Route path='/profile' element = {<><Navbar/><Profile db={db} auth={auth}/></>} />
