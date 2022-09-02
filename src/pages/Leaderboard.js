@@ -16,7 +16,7 @@ export default function Leaderboard({db}){
         const highScorers = []
         const usersCollection = collection(db, 'users')
         
-        const q = await query(usersCollection, orderBy('highScore'), limit(10))
+        const q = await query(usersCollection, orderBy('highScore', 'desc'), limit(10))
         const result = await getDocs(q)
 
         result.forEach((doc)=>{
