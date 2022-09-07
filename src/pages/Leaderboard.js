@@ -35,6 +35,7 @@ export default function Leaderboard({db}){
                         <th scope='col'>#</th>
                         <th scope='col'>Username</th>
                         <th scope='col'>High score</th>
+                        <th scope='col'>Games played</th>
                     </tr>
                 </thead>
                 {}
@@ -44,6 +45,7 @@ export default function Leaderboard({db}){
                         <th scope='row'>{index+1}</th>
                         <td>{user.username}</td>
                         <td>{user.highScore}</td>
+                        <td>{user.gamesPlayed.length}</td>
                     </tr>
                     ))}
                 </tbody>
