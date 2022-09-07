@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/color_guesser/static/css/main.c6aca046.css",
-    "main.js": "/color_guesser/static/js/main.b0569f9a.js",
+    "main.js": "/color_guesser/static/js/main.98b3d15a.js",
     "static/media/bootstrap-icons.woff?": "/color_guesser/static/media/bootstrap-icons.e559bf06bc84fd9525e6.woff",
     "static/media/bootstrap-icons.woff2?": "/color_guesser/static/media/bootstrap-icons.ea98e12d2d58747f9fc5.woff2",
     "index.html": "/color_guesser/index.html",
     "main.c6aca046.css.map": "/color_guesser/static/css/main.c6aca046.css.map",
-    "main.b0569f9a.js.map": "/color_guesser/static/js/main.b0569f9a.js.map"
+    "main.98b3d15a.js.map": "/color_guesser/static/js/main.98b3d15a.js.map"
   },
   "entrypoints": [
     "static/css/main.c6aca046.css",
-    "static/js/main.b0569f9a.js"
+    "static/js/main.98b3d15a.js"
   ]
 }
