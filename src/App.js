@@ -33,7 +33,7 @@ function App() {
 
   return (
     <>
-    <Router basename="Color_Guesser">
+    <Router basename="color_guesser">
       <Routes>
         <Route exact path='/' element={<Root/>} />
         <Route path='/main' element = {<><Navbar/><Main auth={auth}/></>} />
